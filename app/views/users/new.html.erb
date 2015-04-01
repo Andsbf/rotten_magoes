@@ -1,4 +1,6 @@
-<h1>Sign Up</h1>
+<div class="container" style="width: 400px">
+  <div class="jumbotron" style="background-color: #337AB7;">
+    <h1 style="color:whit">Sign Up</h1>
     <%= form_for @user do |f| %>
       <% if @user.errors.any? %>
         <div>
@@ -16,11 +18,11 @@
       </div>
       <div>
         <%= f.label "firstname", "First Name" %><br>
-        <%= f.text_field "firstname" %>
+        <%= f.text_field "firstname"%>
       </div>
       <div>
         <%= f.label "lastname", "Last Name" %><br>
-        <%= f.text_field "lastname" %>
+        <%= f.text_field "lastname"%>
       </div>
       <div>
         <%= f.label "password" %><br>
@@ -28,7 +30,10 @@
       </div>
       <div>
         <%= f.label "password_confirmation" %><br>
-        <%= f.password_field "password_confirmation" %>
+        <%= f.password_field "password_confirmation"%>
       </div>
-      <div><%= f.submit "Submit" %></div>
+      <br>
+      <div ><%= f.submit "Submit", :class=>"btn btn-default" %></div>
     <% end %>
+  </div>
+</div>

@@ -1,11 +1,38 @@
-    <h1>Rotten Mangoes</h1>
-    <%= link_to "Submit a movie!", new_movie_path %>
+  <%= link_to "Submit a movie!", new_movie_path, { :style=>'color:#FFFFFF;',:class=>"btn btn-primary btn-lg btn-block" } %>
     <hr>
-    <% @movies.each do |movie| %>
-      <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
-      <h2><%= link_to movie.title, movie_path(movie) %></h2>
-      <h3><%= movie.release_date %></h3>
-      <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-      <p><%= movie.description %></p>
-      <hr>
-    <% end %>
+    <div class="row marketing">
+      <div class="col-lg-6">
+        <% @movies.each do |movie| %>
+          <%= link_to image_tag(movie.poster_image_url , :width=>200), movie_path(movie) %>
+          <h4><%= link_to movie.title, movie_path(movie) %></h4>
+          <h4><%= formatted_date(movie.release_date) %></h4>
+          <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+          <p><%= movie.description %></p>
+          <hr>
+        <% end %>
+      </div>
+    </div>
+<!-- 
+    <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+      </div> -->

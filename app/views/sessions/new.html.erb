@@ -1,12 +1,17 @@
+<div class="container" style="width: 400px">
+  <div class="jumbotron" style="background-color: #337AB7; color: white; ">
     <h1>Log In</h1>
     <%= form_tag sessions_path do %>
       <div>
         <%= label_tag "email" %><br/>
-        <%= text_field_tag "email" %>
+        <%= text_field_tag "email", :style=>'color:black' %>
       </div>
       <div>
         <%= label_tag :password %><br/>
-        <%= password_field_tag :password %>
+        <%= password_field_tag :password, :style=>'color:black'%>
       </div>
-      <div><%= submit_tag "Log In" %></div>
+      <br>
+      <div><%= submit_tag "Log In", :class=>"btn btn-default" %></div>
     <% end %>
+  </div>
+</div>

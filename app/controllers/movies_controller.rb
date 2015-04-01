@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
 
+
       def index
         @movies = Movie.all
       end
@@ -40,6 +41,10 @@ class MoviesController < ApplicationController
         @movie = Movie.find(params[:id])
         @movie.destroy
         redirect_to movies_path
+      end
+
+      def review_average
+        reviews.size != 0 ? reviews.sum(:rating_out_of_ten)/reviews.size : "No reviews so far!"
       end
 
       protected
