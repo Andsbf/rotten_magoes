@@ -1,6 +1,6 @@
     <%= form_for @movie do |f| %>
      <% if @movie.errors.any? %>
-        <div>
+        <div class="alert alert-danger">
           <%= pluralize(@movie.errors.count, "error") %> prevented this movie from being submitted:
           <ul>
             <% @movie.errors.full_messages.each do |msg| %>
@@ -27,8 +27,11 @@
         <%= f.number_field "runtime_in_minutes" %>
       </div>
       <div>
-        <%= f.label "poster_image_url" %><br>
-        <%= f.text_field "poster_image_url" %>
+        <%= f.file_field :image %>
+      </div>
+      <div>
+        <%= f.label :remote_image_url, "or image url" %><br>
+        <%= f.text_field :remote_image_url %>
       </div>
       <div>
         <%= f.label "description" %><br>

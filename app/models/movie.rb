@@ -14,13 +14,16 @@ class Movie < ActiveRecord::Base
   validates :description,
     presence: true
 
-  validates :poster_image_url,
+  validates :image,
     presence: true
 
   validates :release_date,
     presence: true
 
   validate :release_date_is_in_the_future
+
+
+  mount_uploader :image, ImageUploader
 
   protected
 
