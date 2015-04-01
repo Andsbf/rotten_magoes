@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'reviews/new'
+
+  get 'reviews/create'
+
   resources :users, only: [:new, :create]
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :movies
+  resources :movies do
+        resources :reviews, only: [:new, :create]
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
