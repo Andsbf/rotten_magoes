@@ -1,6 +1,8 @@
     class SessionsController < ApplicationController
 
       def new
+        puts 'foo'
+        byebug
       end
 
       def create
@@ -8,8 +10,9 @@
 
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id
-          redirect_to movies_path
+          redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
         else
+          flash.now[:alert] = "Log in failed..."
           render :new
         end
       end
