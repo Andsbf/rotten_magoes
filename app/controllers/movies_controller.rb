@@ -18,6 +18,7 @@ class MoviesController < ApplicationController
       end
 
       def create
+        params[:movie][:remote_image_url] = nil if params[:movie][:image] != '' && params[:movie][:remote_image_url] != ''
         @movie = Movie.new(movie_params)
 
         if @movie.save

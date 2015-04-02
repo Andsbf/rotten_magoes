@@ -1,0 +1,45 @@
+<div class="container" style="width: 500px">
+  <div class="jumbotron" style="background-color: #337AB7;">
+    <h1 style="color:whit">Edit User</h1>
+    <%= form_for [:admin, @user], method: :patch do |f| %>
+      <% if @user.errors.any? %>
+        <div>
+          <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div>
+        <%= f.label "email" %><br>
+        <%= f.text_field "email" %>
+      </div>
+      <div>
+        <%= f.label "firstname", "First Name" %><br>
+        <%= f.text_field "firstname"%>
+      </div>
+      <div>
+        <%= f.label "lastname", "Last Name" %><br>
+        <%= f.text_field "lastname"%>
+      </div>
+      <div>
+        <%= f.label "password" %><br>
+        <%= f.password_field "password" %>
+      </div>
+      <div>
+        <%= f.label "password_confirmation" %><br>
+        <%= f.password_field "password_confirmation"%>
+      </div>
+      <div>
+        <%= f.label "admin" %><br>
+        <%= f.check_box "admin"%>
+      </div>
+      <br>
+      <div ><%= f.submit "Submit", :class=>"btn btn-default", data: { confirm: "Are you sure you want to submit this form?" } %></div>
+    <% end %>
+  </div>
+</div>
+
+   

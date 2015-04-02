@@ -1,0 +1,36 @@
+ <div class="row marketing">
+   <div class="col-lg-6">
+    <div class="bs-example" data-example-id="striped-table">
+      <table class="table table-striped" style="font-size:11px; white-space: nowrap " >
+        <%= paginate @users %>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th >Created @</th>
+            <th>Updated @</th>
+            <th>Admin</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td> <%= user.email %> </td>
+              <td> <%= user.firstname %> </td>
+              <td> <%= user.lastname %> </td>
+              <td> <%= user.created_at %> </td>
+              <td> <%= user.updated_at %> </td>
+              <td> <%= user.admin %> </td>
+              <td> <%=link_to "Edit", edit_admin_user_path(user) %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+     
