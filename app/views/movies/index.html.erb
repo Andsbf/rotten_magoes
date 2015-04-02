@@ -1,7 +1,8 @@
   <%= link_to "Submit a movie!", new_movie_path, { :style=>'color:#FFFFFF;',:class=>"btn btn-primary btn-lg btn-block" } %>
     <hr>
+    <h2 style="text-align: center;">Recently added:</h2>
     <div class="row marketing">
-      <div class="col-lg-6">
+      <div class="lg-6" style="text-align: center;">
         <% @movies.each do |movie| %>
           <%= link_to image_tag(movie.image_url(:thumb).to_s), movie_path(movie) %>
           <h4><%= link_to movie.title, movie_path(movie) %></h4>

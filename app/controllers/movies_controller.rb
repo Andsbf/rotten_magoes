@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-
+    before_action :restrict_access, only: [:new, :create, :edit, :update, :destroy]
 
       def index
         @movies = Movie.all
@@ -10,17 +10,20 @@ class MoviesController < ApplicationController
       end
 
       def new
+        restrict_access
         @movie = Movie.new
       end
 
       def edit
+        restrict_access
         @movie = Movie.find(params[:id])
       end
 
       def create
-        params[:movie][:remote_image_url] = nil if params[:movie][:image] != '' && params[:movie][:remote_image_url] != ''
+        restrict_access
+        img_selector
         @movie = Movie.new(movie_params)
-
+        img_selector
         if @movie.save
           redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!"
         else
@@ -29,6 +32,7 @@ class MoviesController < ApplicationController
       end
 
       def update
+        restrict_access
         @movie = Movie.find(params[:id])
 
         if @movie.update_attributes(movie_params)
@@ -39,6 +43,7 @@ class MoviesController < ApplicationController
       end
 
       def destroy
+        restrict_access
         @movie = Movie.find(params[:id])
         @movie.destroy
         redirect_to movies_path
@@ -49,6 +54,10 @@ class MoviesController < ApplicationController
       end
 
       protected
+
+      def img_selector
+        params[:movie][:remote_image_url] = nil if params[:movie][:image] != '' && params[:movie][:remote_image_url] != ''
+      end
 
       def movie_params
         params.require(:movie).permit(

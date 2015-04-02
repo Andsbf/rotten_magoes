@@ -6,20 +6,19 @@ class Admin::UsersController < ApplicationController
     @users = User.order(:firstname).page(params[:page]).per(10)
   end
 
-  # def new
-  #   @user = User.new
-  # end
+  def new
+    @user = User.new
+  end
 
-  #   def create
-  #     @user = User.new(user_params)
+    def create
+      @user = User.new(user_params)
 
-  #     if @user.save
-  #       session[:user_id] = @user.id
-  #       redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
-  #     else
-  #       render :new
-  #     end
-  #   end
+      if @user.save
+        redirect_to admin_users_path, notice: "#{@user.firstname} was successfully created!"
+      else
+        render :new
+      end
+    end
 
   def update
     
@@ -35,6 +34,12 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path, alert: "#{@user.firstname} deleted successfully"
   end
 
   protected
