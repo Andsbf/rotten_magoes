@@ -7,4 +7,10 @@ class UserMailer < ApplicationMailer
     @url  = 'http://example.com/login'
     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end
+
+  def bye_email(user)
+    @user = user
+    @url  = 'http://example.com/login'
+    mail(to: @user.email, subject: 'byebye from rotten')
+  end
 end
