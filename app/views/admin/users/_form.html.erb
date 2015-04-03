@@ -1,6 +1,5 @@
 <div class="container" style="width: 500px">
   <div class="jumbotron" style="background-color: #337AB7;">
-    <h1 style="color:whit">Edit User</h1>
     <%= form_for [:admin, @user] do |f| %>
       <% if @user.errors.any? %>
         <div>

@@ -1,5 +1,7 @@
 class Movie < ActiveRecord::Base
-  
+
+  scope :long_duration, -> { where('runtime_in_minutes > ?', 100) }
+    
   has_many :reviews
 
   validates :title,
