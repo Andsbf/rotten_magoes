@@ -2,7 +2,8 @@ class MoviesController < ApplicationController
     before_action :restrict_access, only: [:new, :create, :edit, :update, :destroy]
 
       def index
-        @movies = Movie.all
+        @movies = recent_or_search
+          
       end
 
       def show
@@ -51,6 +52,27 @@ class MoviesController < ApplicationController
 
       def review_average
         reviews.size != 0 ? reviews.sum(:rating_out_of_ten)/reviews.size : "No reviews so far!"
+      end
+
+      def recent_or_search
+        relation = Movie.all        
+        relation =
+        if params[:search]
+          search = params[:search]
+          relation = relation.where(director: search[:director]) unless search[:director].empty?
+          relation = relation.where(title: search[:title]) unless search[:title].empty?
+          if !search[:duration].empty? then
+            runtime = case search[:duration]
+            when '<=90' then '<= 90'
+            when '90><120' then 'between 90 and 120'
+            else '>= 120'
+            end
+            relation = relation.where("runtime_in_minutes #{runtime}")
+          end
+          relation
+        else 
+          relation.order(:created_at).limit(5)
+        end
       end
 
       protected

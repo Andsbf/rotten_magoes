@@ -1,15 +1,9 @@
-  <%= link_to "Submit a movie!", new_movie_path, { :style=>'color:#FFFFFF;',:class=>"btn btn-primary btn-lg btn-block" } %>
-    <hr>
-    <h2 style="text-align: center;">Recently added:</h2>
-    <div class="row marketing">
-      <div class="lg-6" style="text-align: center;">
-        <% @movies.each do |movie| %>
-          <%= link_to image_tag(movie.image_url(:thumb).to_s), movie_path(movie) %>
-          <h4><%= link_to movie.title, movie_path(movie) %></h4>
-          <h4><%= formatted_date(movie.release_date) %></h4>
-          <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-          <p><%= movie.description %></p>
-          <hr>
-        <% end %>
-      </div>
-    </div>
+<%= link_to "Submit a movie!", new_movie_path, { :style=>'color:#FFFFFF;',:class=>"btn btn-primary btn-lg btn-block" } %>
+<br>
+ <%= render 'search_form' %>
+<hr>
+<% if params[:search] %>
+  <%= render 'search_result' %>
+<%else%>
+  <%= render 'recent_added' %>
+<% end %>

@@ -1,0 +1,22 @@
+<div class='container' style="width: 400px; border: 2px solid; border-color: #eee; border-radius: 8px;">
+  <div style="padding-left: 20px">
+    <h2>Search for a movie:</h2> 
+    <%= form_tag(movies_path, method: :get )do %>
+      <%= label_tag("search[title]", "Title:") %>
+      <%= text_field_tag("search[title]", "#{params[:search][:title]}") %>
+      <br>
+      <%= label_tag("search[:director", "Director:") %>
+      <%= text_field_tag("search[director]", "#{params[:search][:director]}") %>
+      <br>
+      <%= label_tag("search[duration]", "Duration:")  %>
+      <%= select_tag("search[duration]", options_for_select([
+                                                    ["Under 90 minutes", '<=90'],
+                                                    ["Between 90 and 120 minutes", '90><120'],
+                                                    ["Over 120 minutes", '>=120']
+                                                    ]),
+                    {include_blank: true}) %>
+      <br>
+      <%= submit_tag "Search", :class=>"btn btn-default btn-block" %>
+    <% end %>
+  </div>
+</div>
