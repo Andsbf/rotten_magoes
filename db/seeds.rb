@@ -11,9 +11,11 @@ if Rails.env.development?
     users = []
     movies = []
     reviews = []
-        
+    
+    #controlled admin user    
     users << User.create(email: 'andsbf@gmail.com', password: '123456', password_confirmation: '123456', firstname: 'Anderson', lastname: 'Saunders', admin: true)
-
+    #controlled non-admin user    
+    users << User.create(email: 'paula@gmail.com', password: '123456', password_confirmation: '123456', firstname: 'Paula', lastname: 'Campani')
     20.times do |i|
         users << User.create(
             firstname: Faker::Name.first_name,

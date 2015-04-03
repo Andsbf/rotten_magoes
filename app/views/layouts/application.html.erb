@@ -1,33 +1,17 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>RottenMangoes</title>
-  
-</head>
-<body>
-<div style='background-color: darkblue; color: white; font-size: 20px'>Navbar</div>
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value) %>
-  <% end %>
-  <%= yield %>
-</body>
-</html>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+
 
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
+
+    <%= favicon_link_tag 'favicon.ico' %>
+
 
     <title>Rotten Mangoes</title>
 

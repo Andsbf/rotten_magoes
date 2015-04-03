@@ -2,9 +2,11 @@
   <nav>
     <ul class="nav nav-pills pull-right">
       <% if current_user %>
-        <li role="presentation"><a href="#">Signed in as <%= current_user.full_name %> </a></li>
+        <% if current_user.admin %>
+          <li role="presentation"><%= link_to "Admin Stuff", admin_users_path %></li>
+         <% end %>
+        <li role="presentation" style="padding: 10px 15px 10px 15px">Signed in as <%= current_user.full_name %></li>
         <li role="presentation" class="active"><%= link_to "Log out", session_path("current"), method: :delete %></li>
-        
       <% else %>
         <li role="presentation"><%= link_to "Log In", new_session_path %></li>
         <li role="presentation"><%= link_to "Sign Up", new_user_path %></li>
