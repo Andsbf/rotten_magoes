@@ -3,10 +3,10 @@
     <h2>Search for a movie:</h2> 
     <%= form_tag(movies_path, method: :get )do %>
       <%= label_tag("search[title]", "Title:") %>
-      <%= text_field_tag("search[title]", "#{params[:search][:title]}") %>
+      <%= text_field_tag("search[title]") %>
       <br>
       <%= label_tag("search[:director", "Director:") %>
-      <%= text_field_tag("search[director]", "#{params[:search][:director]}") %>
+      <%= text_field_tag("search[director]") %>
       <br>
       <%= label_tag("search[duration]", "Duration:")  %>
       <%= select_tag("search[duration]", options_for_select([
