@@ -59,15 +59,17 @@ class MoviesController < ApplicationController
         relation =
           if params[:search]
             search = params[:search]
+            
             relation = relation.where(director: search[:director]) unless search[:director].empty?
+
             relation = relation.where(title: search[:title]) unless search[:title].empty?
+
             if !search[:duration].empty? then
               runtime = case search[:duration]
-              when '<=90' then '<= 90'
-              when '90><120' then 'between 90 and 120'
-              else '>= 120'
+              when '<=90' then relation = relation.under_90_min
+              when '90><120' then relation = relation.btw_90_and_120_min
+              else relation =  relation.over_120_min
             end
-            relation = relation.where("runtime_in_minutes #{runtime}")
           end
           relation
         else 
