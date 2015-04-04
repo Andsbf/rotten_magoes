@@ -45,14 +45,14 @@ class Admin::UsersController < ApplicationController
   end
 
   def view_mode
-    session[:admin] =  session[:user_id]
+    session[:admin_id] =  current_user.id
     session[:user_id] = params[:id]
     redirect_to movies_path
   end
 
   def  exit_view_mode
-     session[:user_id] = session[:admin]
-     session[:admin] = nil
+     session[:user_id] = session[:admin_id]
+     session[:admin_id] = nil
      redirect_to admin_users_path, notice: "Adios!"
   end
 
