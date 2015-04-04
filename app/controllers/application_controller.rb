@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def admin_access
     restrict_access
-    if !current_user.admin? and !session[:admin]
+    if !current_user.admin? and !session[:admin_id]
       flash[:alert] = "Get out!"
       redirect_to new_session_path
     end

@@ -15,9 +15,9 @@ Rails.application.routes.draw do
 
   namespace  :admin do
     resources :users do 
+      get 'exit_view_mode', on: :collection, as: 'exit_view_mode'
       member do 
         get 'view_mode', as: 'view_mode'
-        get 'exit_view_mode', as: 'exit_view_mode'
       end
     end
   end

@@ -7,7 +7,7 @@
           <li role="presentation"><%= link_to "Admin Stuff", admin_users_path %></li>
         <% end %>
         <% if session[:admin_id] %>
-          <li role="presentation"><%= link_to "exit view mode", exit_view_mode_admin_user_path(current_user.id) %></li>
+          <li role="presentation"><%= link_to "exit view mode", exit_view_mode_admin_users_path %></li>
         <% end %>
         <li role="presentation" style="padding: 10px 15px 10px 15px">Signed in as <%= current_user.full_name %></li>
         <li role="presentation" class="active"><%= link_to "Log out", session_path("current"), method: :delete %></li>

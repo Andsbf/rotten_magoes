@@ -53,7 +53,7 @@ class Admin::UsersController < ApplicationController
   def  exit_view_mode
      session[:user_id] = session[:admin_id]
      session[:admin_id] = nil
-     redirect_to admin_users_path, notice: "Adios!"
+     redirect_to admin_users_path, notice: "View mode session finished!"
   end
 
   protected

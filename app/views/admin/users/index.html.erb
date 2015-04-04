@@ -1,14 +1,18 @@
- <div class="row marketing">
-  <div style='text-align:center'>
-    <%= link_to new_admin_user_path,:class=>"btn btn-info" do %>
-    <i class="glyphicon glyphicon-plus"></i> Create a new user
-    <% end %>
+ <div class="row marketing" style='text-align:center'>
+ <div style="height: 70px;">
+   <div class="pull-left" style="padding-top: 18px">
+      <%= link_to new_admin_user_path,:class=>"btn btn-info" do %>
+      <i class="glyphicon glyphicon-plus"></i> Create a new user
+    <% end %>  
+    </div>
+    <div class="pull-right">
+      <%= paginate @users %>
+    </div>
   </div>
-   <div class="col-lg-6">
-    <div class="bs-example" data-example-id="striped-table">
+  <div class="bs-example" data-example-id="striped-table">
       
       <table class="table table-striped" style="font-size:11px; white-space: nowrap " >
-        <%= paginate @users %>
+        
         <thead>
           <tr>
             <th>First Name</th>
@@ -41,7 +45,6 @@
         </tbody>
       </table>
     </div>
-  </div>
 </div>
 
 
