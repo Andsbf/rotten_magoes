@@ -44,6 +44,18 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path, alert: "#{@user.firstname} deleted successfully"
   end
 
+  def view_mode
+    session[:admin] =  session[:user_id]
+    session[:user_id] = params[:id]
+    redirect_to movies_path
+  end
+
+  def  exit_view_mode
+     session[:user_id] = session[:admin]
+     session[:admin] = nil
+     redirect_to admin_users_path, notice: "Adios!"
+  end
+
   protected
 
   def user_params

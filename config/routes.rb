@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do 
+    resource :profile, only: [:edit, :show]
+
+  end
+
+
 
   resource :session, only: [:new, :create, :destroy]
 
@@ -9,7 +14,12 @@ Rails.application.routes.draw do
   end
 
   namespace  :admin do
-    resources :users
+    resources :users do 
+      member do 
+        get 'view_mode', as: 'view_mode'
+        get 'exit_view_mode', as: 'exit_view_mode'
+      end
+    end
   end
 
 

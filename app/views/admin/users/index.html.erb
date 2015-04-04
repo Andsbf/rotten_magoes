@@ -18,18 +18,24 @@
             <th>Updated @</th>
             <th>Admin</th>
             <th>Option</th>
+            <th>View mode</th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td> <%= user.email %> </td>
-              <td> <%= user.firstname %> </td>
-              <td> <%= user.lastname %> </td>
-              <td> <%= user.created_at %> </td>
-              <td> <%= user.updated_at %> </td>
-              <td> <%= user.admin %> </td>
-              <td> <%=link_to "Edit", edit_admin_user_path(user) %> </td>
+              <td><%= user.email %></td>
+              <td><%= user.firstname %></td>
+              <td><%= user.lastname %></td>
+              <td><%= user.created_at %></td>
+              <td><%= user.updated_at %></td>
+              <td><%= user.admin %></td>
+              <td><%=link_to "Edit", edit_admin_user_path(user) %></td>
+              <td style="text-align:center">
+                  <%= link_to view_mode_admin_user_path(user.id) do %>
+                    <i class="glyphicon glyphicon-eye-open"></i>
+                  <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
